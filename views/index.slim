@@ -2,6 +2,12 @@ p Välkommen till chipszonen!
 article
     form action="/random" method="POST"
         input type="submit" value="Random"
+    form action="/milk" method="POST"
+        input type="submit" value="Mjölk"
+    p #{nomilk}
+    form action="/snacks" method="POST"
+        input type="submit" value="Snacks"
+    p #{snacks}
     p #{chipsinfo}
     - if chipsinfo != nil
         p #{chipsinfo[4]}
