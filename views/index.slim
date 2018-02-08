@@ -1,24 +1,35 @@
-p Välkommen till chipszonen!
-article
-    form action="/random" method="POST"
-        input type="submit" value="Random"
-    form action="/milk" method="POST"
-        input type="submit" value="Mjölk"
-    p #{nomilk}
-    form action="/snacks" method="POST"
-        input type="submit" value="Snacks"
-    p #{snacks}
-    p #{chipsinfo}
-    - if chipsinfo != nil
-        p #{chipsinfo[4]}
-        img src= "./img/#{chipsinfo[4]}"
-        - if !rated.include?(chipsinfo[0])
-            form action="/rate" method="POST"
-                input type="number" value="0" min="0" max="10" name="rating"
-                input type="submit" value="rate"
-        - else
-            p Du har redan betygsatt denna
-        - if rating != "Ej betygsatt"
-            p Betyg: #{rating.round(2)} (röster: #{votes})
-        - else
-            p #{rating}
+div class="left"
+    article class="chips"
+        div
+            form action="/random" method="POST"
+                input type="submit" value="Random"
+            form action="/milk" method="POST"
+                input type="submit" value="Mjölkfri"
+            p #{nomilk}
+            form action="/snacks" method="POST"
+                input type="submit" value="Snacks"
+            p #{snacks}
+            p #{chipsinfo}
+            - if chipsinfo != nil
+                p #{chipsinfo[4]}
+                img src= "./img/#{chipsinfo[4]}"
+                - if !rated.include?(chipsinfo[0])
+                    form action="/rate" method="POST"
+                        input type="number" value="0" min="0" max="10" name="rating"
+                        input type="submit" value="rate"
+                - else
+                    p Du har redan betygsatt denna
+                - if rating != "Ej betygsatt"
+                    p Betyg: #{rating.round(2)} (röster: #{votes})
+                - else
+                    p #{rating}
+div class="right"
+    article class="dip"
+        form action="/diprandom" method="POST"
+            input type="submit" value="Random"
+        - if dipinfo != nil
+            p #{dipinfo}
+            img src= "./img/#{dipinfo[4]}"
+    article class="best"
+        p HIGHEST RATED
+        img src= "./img/#{top_rated[4]}"
